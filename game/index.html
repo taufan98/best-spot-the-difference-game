@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Bay — Spot the Difference</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #141020;
+    color: #fff3d6;
+    font-family: Georgia, 'Times New Roman', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  header {
+    width: 1200px;
+    max-width: 96vw;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 14px 4px 8px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #ffd76a;
+  }
+  header h1 span { color: #ff8a7a; font-size: 18px; letter-spacing: 2px; }
+  #level-name { font-size: 17px; color: #c9c2d6; }
+  #hud {
+    width: 1200px;
+    max-width: 96vw;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 4px 10px;
+    font-family: sans-serif;
+  }
+  .pill {
+    background: #2e2748;
+    border: 1px solid #4a3f6e;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  #found-count { background: #3a2a1a; border-color: #8a6a3a; color: #ffd76a; }
+  #timer.low { background: #5a1e1e; border-color: #ff5a4e; color: #ffb0a8; }
+  .spacer { flex: 1; }
+  button {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1d1830;
+    background: #ffd76a;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  button:disabled { background: #5a5468; color: #a9a3b8; cursor: default; }
+  button.secondary { background: #8ad6ff; }
+  #level-bar {
+    width: 1200px;
+    max-width: 96vw;
+    display: flex;
+    gap: 10px;
+    padding: 0 4px 12px;
+  }
+  .level-btn {
+    flex: 1;
+    background: #2e2748;
+    color: #fff3d6;
+    border: 1px solid #4a3f6e;
+    padding: 12px;
+    font-size: 15px;
+  }
+  .level-btn:hover { background: #3d3460; }
+  #game {
+    width: 1200px;
+    max-width: 96vw;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  }
+  footer {
+    width: 1200px;
+    max-width: 96vw;
+    padding: 10px 4px 18px;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #8f88a5;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏮 Lantern Bay <span>SPOT THE DIFFERENCE</span></h1>
+  <div id="level-name">Level 1 of 3 — Harbour at Dusk</div>
+</header>
+<div id="hud">
+  <div class="pill" id="found-count">Found 0 of 7 • 7 remaining</div>
+  <div class="pill" id="timer">Time 3:00</div>
+  <div class="pill" id="score">Score 0</div>
+  <div class="spacer"></div>
+  <button id="hint-btn">Hint (H) — 3 left</button>
+  <button id="restart-btn" class="secondary">Restart (R)</button>
+  <button id="mute-btn" class="secondary">Sound: on (M)</button>
+  <button id="next-btn" style="display:none">Next level (N) →</button>
+  <button id="again-btn" style="display:none">Play again ↺</button>
+</div>
+<div id="level-bar">
+  <button class="level-btn" data-level="0">1 · Harbour at Dusk</button>
+  <button class="level-btn" data-level="1">2 · Night Market</button>
+  <button class="level-btn" data-level="2">3 · Lighthouse Garden</button>
+</div>
+<canvas id="game"></canvas>
+<footer>
+  <span>Click a difference in either picture — a gold ring marks it on both. Wrong clicks cost 5 seconds.</span>
+  <span>An original game · art, sounds and scenes drawn in code · no network</span>
+</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
